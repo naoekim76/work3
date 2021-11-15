@@ -44,7 +44,7 @@ export default {
     },
   },
   created: function() {
-    console.log('created');
+    console.log('created'); // 생성
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
