@@ -13,16 +13,16 @@ import TodoInput from '../components/TodoInput.vue'
 export default {
   name: 'InputView',
   components: {
-    TodoHeader: TodoHeader,
-    TodoInput: TodoInput,
+    TodoHeader,
+    TodoInput,
   },
-  data: function() {
+  data() {
     return {
       headerTitle: 'Todo it!'
     }
   },
   methods: {
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       console.log('addOneItem');
       const itemObj = {completed: false, title: todoItem.title, contents: todoItem.contents};
       localStorage.setItem(todoItem.title, JSON.stringify(itemObj));

@@ -15,35 +15,35 @@ import TodoFooter from '../components/TodoFooter.vue'
 export default {
   name: 'ListView',
   components: {
-    TodoHeader: TodoHeader,
-    TodoList: TodoList,
-    TodoFooter: TodoFooter,
+    TodoHeader, // TodoHeader : TodoHeader와 동일
+    TodoList,
+    TodoFooter,
   },
-  data: function() {
+  data() {
     return {
       todoItems: [],
       headerTitle: 'Todo it!'
     }
   },
   methods: {
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       console.log('removeOneItem');
       localStorage.removeItem(todoItem.title);
       this.todoItems.splice(index, 1);
     },
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       console.log('toggleOneItem');
       this.todoItems[index].completed = !this.todoItems[index].completed;
       localStorage.removeItem(this.todoItems[index].title);
       localStorage.setItem(this.todoItems[index].title, JSON.stringify(this.todoItems[index]));
     },
-    clearAllItems: function() {
+    clearAllItems() {
       console.log('clearAllItem');
       this.todoItems = [];
       localStorage.clear();
     },
   },
-  created: function() {
+  created() {
     console.log('created'); // 생성
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {

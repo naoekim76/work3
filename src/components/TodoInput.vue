@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    addTodo: function() {
+    addTodo() {
       console.log(this.newTodoItem.title);
       console.log(this.newTodoItem.contents);
       if (this.newTodoItem.title !== '' && this.newTodoItem.contents !== '') {
@@ -50,13 +50,13 @@ export default {
         this.showModal = true;
       }
     },
-    clearInput: function() {
+    clearInput() {
       this.newTodoItem.title = '';
       this.newTodoItem.contents = '';
     }
   },
   components: {
-    Modal: Modal
+    Modal
   }
 }
 </script>

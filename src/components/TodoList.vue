@@ -30,7 +30,7 @@
 import Modal from './common/Modal.vue'
 
 export default {
-  data: function() {
+  data() {
     return {
       showModal : false,
       todoItem : {
@@ -41,19 +41,19 @@ export default {
   },
   props: ['propsdata'],
   methods: {
-    toggleTodo: function(todoItem, index) {
+    toggleTodo(todoItem, index) {
       this.$emit('toggleItem', todoItem, index);
     },
-    removeTodo: function(todoItem, index) {
+    removeTodo(todoItem, index) {
       this.$emit('removeItem', todoItem, index);
     },
-    viewContents: function(todoItem) {
+    viewContents(todoItem) {
       this.todoItem = todoItem;
       this.showModal = true;
     }
   },
   components: {
-    Modal: Modal,
+    Modal, // Modal : Modal과 동일
   }
 }
 </script>
