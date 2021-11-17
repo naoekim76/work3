@@ -28,7 +28,7 @@
 import Modal from '../components/common/Modal.vue'
 
 export default {
-  data: function() {
+  data() {
     return {
       newTodoItem: {
         title: '',
