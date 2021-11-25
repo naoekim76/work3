@@ -3,10 +3,10 @@
     <router-link to="/input">할일 등록</router-link>
     <section>
       <transition-group name="list" tag="ul">
-        <li v-for="(todoItem, index) in propsdata" class="shadow" :key="todoItem.title">
-          <i class="checkBtn fas fa-check" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleTodo(todoItem, index)"></i>
+        <li v-for="(todoItem, index) in this.$store.state.todoItems" class="shadow" :key="todoItem.title">
+          <i class="checkBtn fas fa-check" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleTodo(index)"></i>
           <span :class="{textCompleted: todoItem.completed}" @click="viewContents(todoItem)">{{ todoItem.title }}</span>
-          <span class="removeBtn" @click="removeTodo(todoItem, index)">
+          <span class="removeBtn" @click="removeTodo(index)">
             <i class="removeBtn fas fa-trash-alt"></i>
           </span>
         </li>
@@ -39,13 +39,13 @@ export default {
       }
     }
   },
-  props: ['propsdata'],
+  // props: ['propsdata'],
   methods: {
-    toggleTodo(todoItem, index) {
-      this.$emit('toggleItem', todoItem, index);
+    toggleTodo(index) {
+      this.$store.commit('toggleOneItem', index);
     },
-    removeTodo(todoItem, index) {
-      this.$emit('removeItem', todoItem, index);
+    removeTodo(index) {
+      this.$store.commit('removeOneItem', index);
     },
     viewContents(todoItem) {
       this.todoItem = todoItem;

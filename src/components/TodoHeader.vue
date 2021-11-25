@@ -1,16 +1,16 @@
 <template>
   <div>
     <header>
-      <h1>{{ headerTitle }}</h1>
+      <h1>{{ this.$store.state.headerText }}</h1>
     </header>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    headerTitle: String,
-  }
+  // props: {
+  //   headerTitle: String,
+  // }
 }
 </script>
 

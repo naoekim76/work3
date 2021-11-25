@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TodoHeader :headerTitle="headerTitle"></TodoHeader>   
-    <TodoInput @addItem="addOneItem"></TodoInput>
+    <TodoHeader></TodoHeader>   
+    <TodoInput></TodoInput>
   </div>
 </template>
 
@@ -16,18 +16,11 @@ export default {
     TodoHeader,
     TodoInput,
   },
-  data() {
-    return {
-      headerTitle: 'Todo it!'
-    }
-  },
-  methods: {
-    addOneItem(todoItem) {
-      console.log('addOneItem');
-      const itemObj = {completed: false, title: todoItem.title, contents: todoItem.contents};
-      localStorage.setItem(todoItem.title, JSON.stringify(itemObj));
-    },
-  },
+  // data() {
+  //   return {
+  //     headerTitle: 'Todo it!'
+  //   }
+  // }
 }
 </script>
 

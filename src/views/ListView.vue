@@ -1,8 +1,8 @@
 <template>
   <div>
     <TodoHeader :headerTitle="headerTitle"></TodoHeader>   
-    <TodoList :propsdata="todoItems" @toggleItem="toggleOneItem" @removeItem="removeOneItem"></TodoList>
-    <TodoFooter @clearItems="clearAllItems"></TodoFooter>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -21,38 +21,9 @@ export default {
   },
   data() {
     return {
-      todoItems: [],
       headerTitle: 'Todo it!'
     }
-  },
-  methods: {
-    removeOneItem(todoItem, index) {
-      console.log('removeOneItem');
-      localStorage.removeItem(todoItem.title);
-      this.todoItems.splice(index, 1);
-    },
-    toggleOneItem(todoItem, index) {
-      console.log('toggleOneItem');
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.removeItem(this.todoItems[index].title);
-      localStorage.setItem(this.todoItems[index].title, JSON.stringify(this.todoItems[index]));
-    },
-    clearAllItems() {
-      console.log('clearAllItem');
-      this.todoItems = [];
-      localStorage.clear();
-    },
-  },
-  created() {
-    console.log('created'); // 생성
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
-    }
-  },
+  }
 }
 </script>
 

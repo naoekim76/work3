@@ -43,7 +43,8 @@ export default {
       console.log(this.newTodoItem.title);
       console.log(this.newTodoItem.contents);
       if (this.newTodoItem.title !== '' && this.newTodoItem.contents !== '') {
-        this.$emit('addItem', this.newTodoItem);
+        // this.$emit('addItem', this.newTodoItem);
+        this.$store.commit('addOneItem', this.newTodoItem);
         this.clearInput();
         this.$router.push('/');
       } else {
