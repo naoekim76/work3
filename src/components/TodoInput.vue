@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    addTodo() {
+     addTodo() {
       console.log(this.newTodoItem.title);
       console.log(this.newTodoItem.contents);
       if (this.newTodoItem.title !== '' && this.newTodoItem.contents !== '') {
