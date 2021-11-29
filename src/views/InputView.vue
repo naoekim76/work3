@@ -16,11 +16,6 @@ export default {
     TodoHeader,
     TodoInput,
   },
-  // data() {
-  //   return {
-  //     headerTitle: 'Todo it!'
-  //   }
-  // }
 }
 </script>
 

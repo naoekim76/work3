@@ -15,7 +15,7 @@ import TodoFooter from '../components/TodoFooter.vue'
 export default {
   name: 'ListView',
   components: {
-    TodoHeader, // TodoHeader : TodoHeader와 동일
+    TodoHeader,
     TodoList,
     TodoFooter,
   },

@@ -39,7 +39,6 @@ export default {
       }
     }
   },
-  // props: ['propsdata'],
   methods: {
     toggleTodo(index) {
       this.$store.commit('toggleOneItem', index);
