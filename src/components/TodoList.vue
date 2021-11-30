@@ -3,7 +3,7 @@
     <router-link to="/input">할일 등록</router-link>
     <section>
       <transition-group name="list" tag="ul">
-        <li v-for="(todoItem, index) in this.storedTodoItems" class="shadow" :key="todoItem.title">
+        <li v-for="(todoItem, index) in this.getTodoItems" class="shadow" :key="todoItem.title">
           <i class="checkBtn fas fa-check" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleTodo(index)"></i>
           <span :class="{textCompleted: todoItem.completed}" @click="viewContents(todoItem)">{{ todoItem.title }}</span>
           <span class="removeBtn" @click="removeTodo(index)">
@@ -41,19 +41,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['storedTodoItems'])
+    ...mapGetters(['getTodoItems'])
   },
   methods: {
     ...mapMutations({
       removeTodo: 'removeOneItem',
       toggleTodo: 'toggleOneItem',
     }),
-    // toggleTodo(index) {
-    //   this.$store.commit('toggleOneItem', index);
-    // },
-    // removeTodo(index) {
-    //   this.$store.commit('removeOneItem', index);
-    // },
+
     viewContents(todoItem) {
       this.todoItem = todoItem;
       this.showModal = true;
