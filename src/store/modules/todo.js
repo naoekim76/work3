@@ -9,7 +9,7 @@ const stroage = {
       }
     }
     return arr;
-  },
+  }
 }
 
 const state = {
@@ -19,6 +19,26 @@ const state = {
 const getters = {
   getTodoItems(state) {
     return state.todoItems;
+  },
+  getItemsCount(state) { // 할일 목록 수
+    return state.todoItems.length;
+  },
+  getCompletedCount(state) { // 완료 수
+    return state.todoItems.filter(items => items.completed).length;
+  },
+  getCompletedRate(state, getters) { // 완료율
+    let rate = 0;
+    if (state.todoItems.length > 0) {
+      rate = (getters.getCompletedCount / state.todoItems.length * 100).toFixed(1);
+    }
+    return rate;
+  },
+  getRateColor(state, getters) { // 비율 색상
+    let color = 'red';
+    const rate = getters.getCompletedRate;
+    if (rate >= 40 && rate < 80) color = 'orange'
+    else if (rate >= 80) color = 'green';
+    return color;
   }
 };
 

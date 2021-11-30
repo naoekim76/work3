@@ -1,9 +1,14 @@
 <template>
   <div>
+    <div>
+        등록{{ getItemsCount }}: 
+        완료: {{ getCompletedCount }} 
+        완료율:<span :style="{color:getRateColor}">{{ getCompletedRate }}%</span>
+    </div>
     <router-link to="/input">할일 등록</router-link>
     <section>
       <transition-group name="list" tag="ul">
-        <li v-for="(todoItem, index) in this.getTodoItems" class="shadow" :key="todoItem.title">
+        <li v-for="(todoItem, index) in getTodoItems" class="shadow" :key="todoItem.title">
           <i class="checkBtn fas fa-check" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleTodo(index)"></i>
           <span :class="{textCompleted: todoItem.completed}" @click="viewContents(todoItem)">{{ todoItem.title }}</span>
           <span class="removeBtn" @click="removeTodo(index)">
@@ -41,7 +46,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getTodoItems'])
+    ...mapGetters(['getTodoItems', 'getItemsCount', 'getCompletedCount', 'getCompletedRate', 'getRateColor'])
   },
   methods: {
     ...mapMutations({

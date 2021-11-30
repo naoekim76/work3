@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TodoHeader :headerTitle="headerTitle"></TodoHeader>   
+    <TodoHeader></TodoHeader>   
     <TodoList></TodoList>
     <TodoFooter></TodoFooter>
   </div>
@@ -18,11 +18,6 @@ export default {
     TodoHeader,
     TodoList,
     TodoFooter,
-  },
-  data() {
-    return {
-      headerTitle: 'Todo it!'
-    }
   }
 }
 </script>

@@ -1,13 +1,16 @@
 <template>
   <div class="clearAllContainer">
-    <span class="clearAllBtn" @click="clearTodo">Clear All</span>
+    <span class="clearAllBtn" @click="clearTodo">Clear All({{ getItemsCount }})</span>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters(['getItemsCount'])
+  },
   methods: {
     ...mapMutations({
       clearTodo: 'clearAllItems'
