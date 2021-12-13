@@ -60,9 +60,11 @@ export default {
 
     ...mapActions(['removeOneItemAsync']),
 
-    // removeTodoAsync(index) {
+    // removeTodoAsync(todoItem, index) {
     //   this.$store.dispatch('removeOneItemAsync', index).then(() => {
-    //     alert('삭제 완료');
+    //     this.todoItem.title = todoItem.title;
+    //     this.todoItem.contents = '삭제되었습니다.';
+    //     this.showModal = true;
     //   })
     // },
 
