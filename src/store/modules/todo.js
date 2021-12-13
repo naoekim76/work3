@@ -13,14 +13,10 @@ const stroage = {
 }
 
 const state = {
-  todoItems: stroage.fetch(),
-  dayList: ['12/25 크리스마스', '1/1 새해 첫날']
+  todoItems: stroage.fetch()
 };
 
 const getters = {
-  getDayList(state) {
-    return state.dayList;
-  },
   getTodoItems(state) {
     return state.todoItems;
   },
@@ -57,7 +53,6 @@ const mutations = {
     console.log('removeOneItem');
     localStorage.removeItem(state.todoItems[index].title);
     state.todoItems.splice(index, 1);
-    alert('삭제 되었습니다.');
   },
   toggleOneItem(state, index) {
     console.log('toggleOneItem');
@@ -74,7 +69,10 @@ const mutations = {
 
 const actions = {
   removeOneItemAsync(context, index) {
-    setTimeout(() => context.commit('removeOneItem', index), 2000);
+    setTimeout(() => {
+      context.commit('removeOneItem', index);
+      alert('삭제 되었습니다.');
+    }, 2000);
   }
   // removeOneItemAsync({ commit }, index) {
   //   return new Promise((resolve) => {

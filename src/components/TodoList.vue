@@ -4,8 +4,8 @@
         등록{{ getItemsCount }}: 
         완료: {{ getCompletedCount }} 
         완료율:<span :style="{color:getRateColor}">{{ getCompletedRate }}%</span>
-        <div v-for="(dayItem, index) in getDayList" :key="index">
-          <p class="dayList">{{dayItem}}</p>
+        <div v-for="(eventDay, index) in getEventDays" :key="index">
+          <p class="eventDays">{{eventDay}}</p>
         </div>
     </div>
     
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getDayList', 'getTodoItems', 'getItemsCount', 'getCompletedCount', 'getCompletedRate', 'getRateColor'])
+    ...mapGetters(['getEventDays', 'getTodoItems', 'getItemsCount', 'getCompletedCount', 'getCompletedRate', 'getRateColor'])
   },
   methods: {
     ...mapMutations({
@@ -96,7 +96,7 @@ li {
   background: white;
   border-radius: 5px;
 }
-.dayList {
+.eventDays {
   line-height: 3pt;
   color: gray;
   font-size: 8pt;
