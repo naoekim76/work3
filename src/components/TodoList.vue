@@ -4,14 +4,18 @@
         등록{{ getItemsCount }}: 
         완료: {{ getCompletedCount }} 
         완료율:<span :style="{color:getRateColor}">{{ getCompletedRate }}%</span>
+        <div v-for="(dayItem, index) in getDayList" :key="index">
+          <p class="dayList">{{dayItem}}</p>
+        </div>
     </div>
+    
     <router-link to="/input">할일 등록</router-link>
     <section>
       <transition-group name="list" tag="ul">
         <li v-for="(todoItem, index) in getTodoItems" class="shadow" :key="todoItem.title">
           <i class="checkBtn fas fa-check" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleTodo(index)"></i>
           <span :class="{textCompleted: todoItem.completed}" @click="viewContents(todoItem)">{{ todoItem.title }}</span>
-          <span class="removeBtn" @click="removeTodo(index)">
+          <span class="removeBtn" @click="removeOneItemAsync(index)">
             <i class="removeBtn fas fa-trash-alt"></i>
           </span>
         </li>
@@ -33,7 +37,7 @@
 
 <script>
 import Modal from './common/Modal.vue'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   data() {
@@ -46,13 +50,21 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getTodoItems', 'getItemsCount', 'getCompletedCount', 'getCompletedRate', 'getRateColor'])
+    ...mapGetters(['getDayList', 'getTodoItems', 'getItemsCount', 'getCompletedCount', 'getCompletedRate', 'getRateColor'])
   },
   methods: {
     ...mapMutations({
       removeTodo: 'removeOneItem',
       toggleTodo: 'toggleOneItem',
     }),
+
+    ...mapActions(['removeOneItemAsync']),
+
+    // removeTodoAsync(index) {
+    //   this.$store.dispatch('removeOneItemAsync', index).then(() => {
+    //     alert('삭제 완료');
+    //   })
+    // },
 
     viewContents(todoItem) {
       this.todoItem = todoItem;
@@ -81,6 +93,11 @@ li {
   padding: 0 0.9rem;
   background: white;
   border-radius: 5px;
+}
+.dayList {
+  line-height: 3pt;
+  color: gray;
+  font-size: 8pt;
 }
 .checkBtn {
   line-height: 45px;
