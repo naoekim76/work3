@@ -4,6 +4,7 @@ import ListView from '../views/ListView.vue'
 
 Vue.use(VueRouter)
 
+//
 const routes = [
   {
     path: '/',
